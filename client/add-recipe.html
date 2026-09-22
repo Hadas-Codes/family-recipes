@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>הוספת מתכון - המתכונים שלי</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><h2>המתכונים שלי</h2></div>
+    <nav>
+      <ul>
+        <li><a href="recipes.html">מתכונים</a></li>
+        <li><a href="add-recipe.html">הוספת מתכון</a></li>
+        <li><a href="about.html">אודות</a></li>
+      </ul>
+      <input type="text" id="recipe-search" placeholder="חפש מתכון לפי שם..." class="search-input">
+    </nav>
+  </header>
+
+  <main>
+    <h2 style="text-align: center;">הוספת מתכון חדש</h2>
+    <form id="add-recipe-form">
+      <div>
+        <label>שם המתכון</label>
+        <input type="text" id="title" required>
+      </div>
+     <div>
+        <label>קטגוריה</label>
+        <select id="category" required>
+          <option value="cakes">עוגות</option>
+          <option value="cookies">עוגיות</option>
+          <option value="pastries">מאפים</option>
+          <option value="food">אוכל</option>
+          <option value="desserts">קינוחים</option>
+        </select>
+      </div>
+      <div>
+        <label>תיאור קצר</label>
+        <input type="text" id="description">
+      </div>
+      <div>
+        <label>מצרכים (מופרדים בפסיקים)</label>
+        <input type="text" id="ingredients" required>
+      </div>
+      <div>
+        <label>אופן הכנה</label>
+        <textarea id="instructions" rows="4" required></textarea>
+      </div>
+      <div>
+        <label>העלאת תמונה</label>
+        <input type="file" id="image" accept="image/*">
+      </div>
+      <button type="submit">שמור מתכון</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>משפחת אלבז | להזמנות פרטיות: 050-411-9222 | מייל: orders@bakery.co.il</p>
+  </footer>
+
+  <script src="js/add-recipe.js"></script>
+</body>
+</html>

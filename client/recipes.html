@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>מתכונים - הקלאסיקה שבלב</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="logo"><h2>המתכונים שלי</h2></div>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="recipes.html">קטגוריות ▾</a>
+          <div class="dropdown-content">
+            <a href="recipes.html?category=cakes" onclick="filterCategory('cakes')">עוגות</a>
+            <a href="recipes.html?category=cookies" onclick="filterCategory('cookies')">עוגיות</a>
+            <a href="recipes.html?category=pastries" onclick="filterCategory('pastries')">מאפים</a>
+            <a href="recipes.html?category=food" onclick="filterCategory('food')">אוכל</a>
+            <a href="recipes.html?category=desserts" onclick="filterCategory('desserts')">קינוחים</a>
+            <a href="recipes.html" onclick="filterCategory('')">הכל</a>
+          </div>
+        </li>
+        <li><a href="add-recipe.html">הוספת מתכון</a></li>
+        <li><a href="about.html">אודות</a></li>
+      </ul>
+         <input type="text" id="recipe-search" placeholder="חפש מתכון לפי שם..." class="search-input">
+    </nav>
+  </header>
+
+  <main>
+    <h2 id="section-title">כל המתכונים הנפלאים</h2>
+    <div id="recipes-container" class="recipes-grid">
+      <!-- כאן יטענו המתכונים ב-JS -->
+    </div>
+  </main>
+
+  <footer>
+    <p>משפחת אלבז | להזמנות פרטיות: 050-411-9222 | מייל: orders@bakery.co.il</p>
+    <p>&copy; 2026 כל הזכויות שמורות</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
