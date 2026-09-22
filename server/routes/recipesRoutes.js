@@ -10,8 +10,11 @@ const dataPath = path.join(__dirname, '../data/recipes.json');
 const router = express.Router();
 
 function getRecipesData() {
+  if (!fs.existsSync(dataPath)) {
+    return [];
+  }
   const data = fs.readFileSync(dataPath, 'utf8');
-  return JSON.parse(data);
+  return JSON.parse(data || '[]');
 }
 
 router.get('/', (req, res) => {
@@ -36,7 +39,7 @@ router.post('/', (req, res) => {
     title,
     category,
     description: description || '',
-    ingredients: Array.isArray(ingredients) ? ingredients : (ingredients ? ingredients.split(',').map(i => i.trim()) : []),
+    ingredients: Array.isArray(ingredients) ? ingredients : [],
     instructions: instructions || '',
     image: image || 'https://via.placeholder.com/300x200?text=Recipe'
   };
@@ -46,7 +49,6 @@ router.post('/', (req, res) => {
   res.status(201).json(newRecipe);
 });
 
-// עדכון מתכון קיים (PUT)
 router.put('/:id', (req, res) => {
   try {
     const { id } = req.params;
@@ -64,9 +66,7 @@ router.put('/:id', (req, res) => {
       title: title || data[index].title,
       category: category || data[index].category,
       description: description !== undefined ? description : data[index].description,
-      ingredients: ingredients !== undefined 
-        ? (Array.isArray(ingredients) ? ingredients : ingredients.split(',').map(i => i.trim())) 
-        : data[index].ingredients,
+      ingredients: ingredients !== undefined ? ingredients : data[index].ingredients,
       instructions: instructions !== undefined ? instructions : data[index].instructions,
       image: (image !== undefined && image !== '') ? image : data[index].image
     };
@@ -79,7 +79,6 @@ router.put('/:id', (req, res) => {
   }
 });
 
-// מחיקת מתכון (DELETE)
 router.delete('/:id', (req, res) => {
   try {
     const { id } = req.params;
