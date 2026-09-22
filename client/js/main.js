@@ -36,15 +36,15 @@ async function loadRecipes() {
       const card = document.createElement('div');
       card.className = 'recipe-card';
 
-      const rawIngredients = Array.isArray(r.ingredients) 
-        ? r.ingredients.join(', ') 
-        : (r.ingredients || '');
-
-      const formattedIngredients = rawIngredients
-        .split(',')
-        .map(item => item.trim())
-        .filter(item => item.length > 0)
-        .join('<br>');
+      // טיפול חכם ומקיף למצרכים לפי שורות / פסיקים / מערך
+      let formattedIngredients = '';
+      if (Array.isArray(r.ingredients)) {
+        formattedIngredients = r.ingredients.map(i => i.trim()).filter(Boolean).join('<br>');
+      } else if (typeof r.ingredients === 'string') {
+        formattedIngredients = (r.ingredients.includes(',') && !r.ingredients.includes('\n'))
+          ? r.ingredients.split(',').map(i => i.trim()).filter(Boolean).join('<br>')
+          : r.ingredients.replace(/\n/g, '<br>');
+      }
 
       const rawInstructions = Array.isArray(r.instructions) 
         ? r.instructions.join('\n') 
@@ -69,7 +69,6 @@ async function loadRecipes() {
         </div>
       `;
 
-      // הוספת פתיחה/סגירה בלחיצה על הכרטיס (חוץ מאשר על הכפתורים)
       card.addEventListener('click', (e) => {
         if (e.target.tagName === 'BUTTON') return;
         card.classList.toggle('open');
@@ -81,6 +80,7 @@ async function loadRecipes() {
     console.error('שגיאה בטעינת מתכונים:', error);
   }
 }
+
 // פונקציית מחיקה
 async function deleteRecipe(id) {
   if (!confirm('האם את בטוחה שברצונך למחוק מתכון זה?')) return;
@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const titleElement = card.querySelector('h3');
         const titleText = titleElement ? titleElement.innerText.toLowerCase() : '';
         
-        // אם תיבת החיפוש ריקה או שהשם תואם - מציגים, אחרת מסתירים
         if (query === '' || titleText.includes(query)) {
           card.classList.remove('hidden');
         } else {
