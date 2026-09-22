@@ -32,9 +32,7 @@ async function loadRecipes() {
     }
 
     recipes.forEach((r, index) => {
-      // זיהוי מזהה מתכון (תמיכה ב-id, _id או אינדקס גיבוי)
       const recipeId = r.id || r._id || index;
-      
       const card = document.createElement('div');
       card.className = 'recipe-card';
 
@@ -70,13 +68,19 @@ async function loadRecipes() {
           <button onclick="deleteRecipe('${recipeId}')" style="background: rgba(230, 57, 70, 0.14); color: #d62828; border: 1px solid rgba(230, 57, 70, 0.3); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">מחיקה</button>
         </div>
       `;
+
+      // הוספת פתיחה/סגירה בלחיצה על הכרטיס (חוץ מאשר על הכפתורים)
+      card.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') return;
+        card.classList.toggle('open');
+      });
+
       container.appendChild(card);
     });
   } catch (error) {
     console.error('שגיאה בטעינת מתכונים:', error);
   }
 }
-
 // פונקציית מחיקה
 async function deleteRecipe(id) {
   if (!confirm('האם את בטוחה שברצונך למחוק מתכון זה?')) return;
