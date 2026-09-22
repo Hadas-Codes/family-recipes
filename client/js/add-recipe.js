@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const editId = urlParams.get('edit');
   
-  const form = document.getElementById('add-recipe-form'); // תוקן ל-ID הנכון מה-HTML
+  const form = document.getElementById('add-recipe-form');
   const pageTitle = document.getElementById('page-title') || document.querySelector('h1');
   let currentBase64Image = '';
 
@@ -12,17 +12,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const res = await fetch(`/api/recipes`);
       const allRecipes = await res.json();
-      const recipeToEdit = allRecipes.find(r => String(r.id) === String(editId));
+      const recipeToEdit = allRecipes.find(r => String(r.id || r._id) === String(editId));
 
       if (recipeToEdit) {
         document.getElementById('title').value = recipeToEdit.title || '';
         document.getElementById('category').value = recipeToEdit.category || '';
         document.getElementById('description').value = recipeToEdit.description || '';
         
-        // המרת מצרכים ממערך למחרוזת עם פסיקים בשביל שדה הטקסט בטופס
-        const ingStr = Array.isArray(recipeToEdit.ingredients) 
-          ? recipeToEdit.ingredients.join(', ') 
-          : (recipeToEdit.ingredients || '');
+        // המרת מצרכים לירידות שורה לתיבת הטקסט
+        let ingStr = '';
+        if (Array.isArray(recipeToEdit.ingredients)) {
+          ingStr = recipeToEdit.ingredients.join('\n');
+        } else if (typeof recipeToEdit.ingredients === 'string') {
+          ingStr = recipeToEdit.ingredients.includes(',') && !recipeToEdit.ingredients.includes('\n')
+            ? recipeToEdit.ingredients.split(',').map(i => i.trim()).join('\n')
+            : recipeToEdit.ingredients;
+        }
         document.getElementById('ingredients').value = ingStr;
 
         document.getElementById('instructions').value = recipeToEdit.instructions || '';
@@ -65,11 +70,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      // פיצול ירידות שורה למערך נקי
+      const rawIng = document.getElementById('ingredients').value;
+      const ingredientsArray = rawIng.split('\n').map(i => i.trim()).filter(Boolean);
+
       const recipeData = {
         title: document.getElementById('title').value,
         category: document.getElementById('category').value,
         description: document.getElementById('description').value,
-        ingredients: document.getElementById('ingredients').value,
+        ingredients: ingredientsArray,
         instructions: document.getElementById('instructions').value,
         image: currentBase64Image
       };
