@@ -114,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const recipeCards = document.querySelectorAll('.recipe-card');
 
       recipeCards.forEach(card => {
-        const titleElement = card.querySelector('h3');
-        const titleText = titleElement ? titleElement.innerText.toLowerCase() : '';
+        // חיפוש בכל תוכן הכרטיס (כותרת, מצרכים, תיאור) ולא רק בכותרת
+        const cardText = card.innerText.toLowerCase();
         
-        if (query === '' || titleText.includes(query)) {
+        if (query === '' || cardText.includes(query)) {
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
