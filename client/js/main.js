@@ -64,6 +64,7 @@ async function loadRecipes() {
           </div>
         </div>
         <div class="recipe-actions">
+          <button onclick="window.print()" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">הדפסה 🖨️</button>
           <button onclick="editRecipe('${recipeId}')" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">עדכון</button>
           <button onclick="deleteRecipe('${recipeId}')" style="background: rgba(230, 57, 70, 0.14); color: #d62828; border: 1px solid rgba(230, 57, 70, 0.3); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">מחיקה</button>
         </div>
@@ -114,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const recipeCards = document.querySelectorAll('.recipe-card');
 
       recipeCards.forEach(card => {
-        // חיפוש בכל תוכן הכרטיס (כותרת, מצרכים, תיאור) ולא רק בכותרת
         const cardText = card.innerText.toLowerCase();
         
         if (query === '' || cardText.includes(query)) {
