@@ -64,7 +64,7 @@ async function loadRecipes() {
           </div>
         </div>
         <div class="recipe-actions">
-          <button onclick="printSingleRecipe(this)" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">הדפסה 🖨️</button>
+          <button onclick="printSingleRecipe(this)" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">הדפסה</button>
           <button onclick="editRecipe('${recipeId}')" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">עדכון</button>
           <button onclick="deleteRecipe('${recipeId}')" style="background: rgba(230, 57, 70, 0.14); color: #d62828; border: 1px solid rgba(230, 57, 70, 0.3); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">מחיקה</button>
         </div>
@@ -104,10 +104,17 @@ function editRecipe(id) {
   window.location.href = `add-recipe.html?edit=${id}`;
 }
 
-// פונקציה חדשה להדפסת מתכון בודד ונקי
+// פונקציה להדפסת מתכון בודד ונקי לחלוטין
 function printSingleRecipe(button) {
   const card = button.closest('.recipe-card');
   if (!card) return;
+
+  // יוצרים עותק של הכרטיס כדי לא לפגוע בתצוגה באתר
+  const clone = card.cloneNode(true);
+  
+  // מסירים את כפתורי הפעולות מהעותק המודפס
+  const actions = clone.querySelector('.recipe-actions');
+  if (actions) actions.remove();
 
   const printWindow = window.open('', '_blank');
   printWindow.document.write(`
@@ -119,24 +126,22 @@ function printSingleRecipe(button) {
       <style>
         body {
           background: white !important;
-          padding: 20px;
+          padding: 30px;
           direction: rtl;
         }
         .recipe-card {
           border: none !important;
           box-shadow: none !important;
           width: 100% !important;
-          max-width: 100% !important;
-          margin: 0 !important;
-        }
-        .recipe-actions {
-          display: none !important;
+          max-width: 800px !important;
+          margin: 0 auto !important;
+          display: block !important;
         }
       </style>
     </head>
     <body>
       <div class="recipe-card open">
-        ${card.innerHTML}
+        ${clone.innerHTML}
       </div>
       <script>
         window.onload = function() {
