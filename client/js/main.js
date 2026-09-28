@@ -115,9 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const recipeCards = document.querySelectorAll('.recipe-card');
 
       recipeCards.forEach(card => {
-        const cardText = card.innerText.toLowerCase();
+        const titleElement = card.querySelector('h3');
+        const titleText = titleElement ? titleElement.innerText.toLowerCase() : '';
         
-        if (query === '' || cardText.includes(query)) {
+        if (query === '' || titleText.includes(query)) {
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
