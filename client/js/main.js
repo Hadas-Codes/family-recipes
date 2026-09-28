@@ -64,7 +64,7 @@ async function loadRecipes() {
           </div>
         </div>
         <div class="recipe-actions">
-          <button onclick="window.print()" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">הדפסה 🖨️</button>
+          <button onclick="printSingleRecipe(this)" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">הדפסה 🖨️</button>
           <button onclick="editRecipe('${recipeId}')" style="background: rgba(0, 0, 0, 0.06); color: #333; border: 1px solid rgba(0, 0, 0, 0.12); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">עדכון</button>
           <button onclick="deleteRecipe('${recipeId}')" style="background: rgba(230, 57, 70, 0.14); color: #d62828; border: 1px solid rgba(230, 57, 70, 0.3); padding: 4px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;">מחיקה</button>
         </div>
@@ -102,6 +102,52 @@ async function deleteRecipe(id) {
 // פונקציית עדכון (מעבירה לדף הוספה/עריכה עם מזהה)
 function editRecipe(id) {
   window.location.href = `add-recipe.html?edit=${id}`;
+}
+
+// פונקציה חדשה להדפסת מתכון בודד ונקי
+function printSingleRecipe(button) {
+  const card = button.closest('.recipe-card');
+  if (!card) return;
+
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <html lang="he" dir="rtl">
+    <head>
+      <meta charset="UTF-8">
+      <title>הדפסת מתכון</title>
+      <link rel="stylesheet" href="css/style.css">
+      <style>
+        body {
+          background: white !important;
+          padding: 20px;
+          direction: rtl;
+        }
+        .recipe-card {
+          border: none !important;
+          box-shadow: none !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+        }
+        .recipe-actions {
+          display: none !important;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="recipe-card open">
+        ${card.innerHTML}
+      </div>
+      <script>
+        window.onload = function() {
+          window.print();
+          window.close();
+        }
+      </script>
+    </body>
+    </html>
+  `);
+  printWindow.document.close();
 }
 
 document.addEventListener('DOMContentLoaded', loadRecipes);

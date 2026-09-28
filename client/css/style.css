@@ -279,34 +279,3 @@ main {
 }
 
 
-@media print {
-  /* הסתרת כל מה שבעמוד כברירת מחדל */
-  body * {
-    visibility: hidden;
-  }
-
-  /* הצגת אזור המתכונים או הכרטיסייה הספציפית */
-  #recipes-container, #recipes-container * {
-    visibility: visible;
-  }
-
-  #recipes-container {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-
-  /* הסתרת כפתורי עריכה, מחיקה והדפסה מתוך ההדפסה עצמה */
-  .recipe-actions, header, footer, .search-input {
-    display: none !important;
-  }
-
-  /* פתיחת כל הכרטיסיות למצב מלא כדי שכל המתכון יודפס */
-  .recipe-card {
-    border: none !important;
-    box-shadow: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-}
