@@ -7,25 +7,33 @@
 </head>
 <body>
   <header>
-    <div class="logo"><h2>המתכונים שלי</h2></div>
-    <nav>
-      <ul>
-        <li class="dropdown">
-          <a href="recipes.html">קטגוריות ▾</a>
-          <div class="dropdown-content">
-            <a href="recipes.html?category=cakes" onclick="filterCategory('cakes')">עוגות</a>
-            <a href="recipes.html?category=cookies" onclick="filterCategory('cookies')">עוגיות</a>
-            <a href="recipes.html?category=pastries" onclick="filterCategory('pastries')">מאפים</a>
-            <a href="recipes.html?category=food" onclick="filterCategory('food')">אוכל</a>
-            <a href="recipes.html?category=desserts" onclick="filterCategory('desserts')">קינוחים</a>
-            <a href="recipes.html" onclick="filterCategory('')">הכל</a>
-          </div>
-        </li>
-        <li><a href="add-recipe.html">הוספת מתכון</a></li>
-        <li><a href="about.html">אודות</a></li>
-      </ul>
-         <input type="text" id="recipe-search" placeholder="חפש מתכון לפי שם..." class="search-input">
-    </nav>
+    <div class="header-content">
+      <div class="hero-text">
+        <p class="subtitle">ספר המתכונים המשפחתי שלנו</p>
+        <h1>
+          הטעמים שעוברים<br>
+          מדור לדור.
+        </h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="dropdown">
+            <a href="recipes.html">קטגוריות ▾</a>
+            <div class="dropdown-content">
+              <a href="recipes.html?category=cakes" onclick="filterCategory('cakes')">עוגות</a>
+              <a href="recipes.html?category=cookies" onclick="filterCategory('cookies')">עוגיות</a>
+              <a href="recipes.html?category=pastries" onclick="filterCategory('pastries')">מאפים</a>
+              <a href="recipes.html?category=food" onclick="filterCategory('food')">אוכל</a>
+              <a href="recipes.html?category=desserts" onclick="filterCategory('desserts')">קינוחים</a>
+              <a href="recipes.html" onclick="filterCategory('')">הכל</a>
+            </div>
+          </li>
+          <li><a href="add-recipe.html">הוספת מתכון</a></li>
+          <li><a href="about.html">אודות</a></li>
+        </ul>
+        <input type="text" id="recipe-search" placeholder="חפש מתכון לפי שם..." class="search-input">
+      </nav>
+    </div>
   </header>
 
   <main>
