@@ -18,12 +18,7 @@ body {
 header {
   background-color: var(--primary-color);
   color: #fff;
-  width: 100%;
-  max-width: 1250px; /* זה בדיוק הרוחב המקסימלי של ה-main והגריד מתחתיו! */
-  margin: 1.5rem auto; /* ממרכז את ההדר ונותן לו מרווח מלמעלה ולמטה */
-  border-radius: 8px; /* אופציונלי: מעגל פינות עדין אם את רוצה שזה ייראה כמו מלבן בפני עצמו */
-  box-sizing: border-box;
-  padding: 1.5rem 2.5rem;
+  padding: 2rem 14rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
