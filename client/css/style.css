@@ -284,45 +284,97 @@ main {
 
 
 
-/* סידור כללי של תוכן ההדר עם מרווח מלמעלה */
-.header-content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 30px;
-  padding-top: 30px; /* מוריד את כל הטקסטים קצת למטה מהקצה העליון */
-}
-
-/* עיצוב הטקסטים */
-.hero-text {
-  text-align: right;
-  color: #fff;
-}
-
-.hero-text .subtitle {
-  font-size: 1.6rem; /* גדל להיות כיתוב בינוני-גדול ברור ונוכח */
-  margin: 0 0 12px 0;
-  font-weight: 500;
-  opacity: 0.95;
-}
-
-.hero-text h1 {
-  font-size: 4rem; /* ענק ומרשים כמו שביקשת! */
-  line-height: 1.15;
-  margin: 0;
-  font-weight: bold;
-}
-
-/* מסגרת יפה וחמימה בצבע חום בהיר שמכילה את התפריט והחיפוש בצד ימין */
+/* אזור הניווט והחיפוש מוצמד לימין */
 header nav {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* מצמיד את הכל לימין */
-  gap: 30px;
-  background-color: var(--secondary-color); /* או גוון חום בהיר לבחירתך כמו #8c6d62 או #a68474 */
-  padding: 15px 25px;
-  border-radius: 12px; /* פינות מעוגלות ועדינות למסגרת */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* הצללה עדינה שתבלוט על רקע ההדר */
-  width: fit-content; /* המסגרת תתאים את עצמה בדיוק לאורך של התפריט והחיפוש */
+  justify-content: flex-end; /* מצמיד את הכל לימין */
+  gap: 12px; /* רווח נעים בין המסגרות */
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* הפיכת רשימת הקישורים לשורה בלי מסגרת גדולה מאגדת */
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* מסגרת קטנה, נפרדת ויפה לכל כפתור ניווט בנפרד */
+header nav ul li a {
+  background-color: #584338;
+  color: #fff;
+  border: 1px solid #7c6255;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+header nav ul li a:hover {
+  background-color: #48352b;
+}
+
+/* תיבת החיפוש מקבלת גם היא מסגרת קטנה ונפרדת בדיוק כמו הכפתורים */
+.search-input {
+  background-color: #584338;
+  color: #fff;
+  border: 1px solid #7c6255;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 220px;
+  outline: none;
+  font-family: inherit;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.search-input::placeholder {
+  color: #e0d0c8;
+}
+
+/* התאמת התפריט הנשלף (Dropdown) */
+header nav .dropdown {
+  position: relative;
+}
+
+header nav .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #584338;
+  border: 1px solid #7c6255;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  z-index: 10;
+  padding: 5px 0;
+}
+
+header nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+header nav .dropdown-content a {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 8px 15px;
+  display: block;
+  text-align: right;
+  white-space: nowrap;
+}
+
+header nav .dropdown-content a:hover {
+  background-color: #48352b;
 }
 
