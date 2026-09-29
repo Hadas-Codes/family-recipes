@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #685244;
+  --primary-color: #564235;
   --secondary-color: #8c6d62;
   --bg-color: #fcf9f5;
   --text-color: #2c221e;
@@ -18,10 +18,15 @@ body {
 header {
   background-color: var(--primary-color);
   color: #fff;
-  padding: 2rem 14rem;
+  width: 100%;
+  max-width: 1250px;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 3.5rem 2.5rem 5rem 2.5rem; /* הגדלנו משמעותית את הריווח למטה ולמעלה */
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start; /* משנה את היישור להתחלה כדי שהאלמנטים ישבו בחלק העליון של ההדר הגדול */
   border-bottom: 3px solid var(--accent);
 }
 
