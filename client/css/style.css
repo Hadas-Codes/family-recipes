@@ -21,7 +21,7 @@ header {
   width: 100%;             /* תופס את כל הרוחב של המסך */
   margin: 0;               /* מוריד את הרווחים מסביב כדי שצמד לקצוות */
   box-sizing: border-box;
-  padding: 3rem 4rem 6rem 4rem; /* מגדיל את הגובה (מלמעלה ולמטה) ואת הרווחים מהצדדים */
+  padding: 3rem 4rem 12rem 4rem; /* מגדיל את הגובה (מלמעלה ולמטה) ואת הרווחים מהצדדים */
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
