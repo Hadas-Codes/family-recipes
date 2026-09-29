@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #4a3b32;
+  --primary-color: #685244;
   --secondary-color: #8c6d62;
   --bg-color: #fcf9f5;
   --text-color: #2c221e;
@@ -18,7 +18,7 @@ body {
 header {
   background-color: var(--primary-color);
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,8 +28,9 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: 30px;
-  padding: 10px 20px;
+  gap: 40px;
+  padding: 15px 30px;
+  width: 100%;
 }
 
 nav ul {
