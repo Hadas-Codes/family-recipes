@@ -284,29 +284,45 @@ main {
 
 
 
+/* סידור כללי של תוכן ההדר עם מרווח מלמעלה */
 .header-content {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 20px;
+  gap: 30px;
+  padding-top: 30px; /* מוריד את כל הטקסטים קצת למטה מהקצה העליון */
 }
 
+/* עיצוב הטקסטים */
 .hero-text {
   text-align: right;
   color: #fff;
 }
 
 .hero-text .subtitle {
-  font-size: 1.2rem;
-  margin: 0 0 8px 0;
-  font-weight: normal;
-  opacity: 0.9;
+  font-size: 1.6rem; /* גדל להיות כיתוב בינוני-גדול ברור ונוכח */
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  opacity: 0.95;
 }
 
 .hero-text h1 {
-  font-size: 2.8rem;
-  line-height: 1.2;
+  font-size: 4rem; /* ענק ומרשים כמו שביקשת! */
+  line-height: 1.15;
   margin: 0;
   font-weight: bold;
+}
+
+/* מסגרת יפה וחמימה בצבע חום בהיר שמכילה את התפריט והחיפוש בצד ימין */
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* מצמיד את הכל לימין */
+  gap: 30px;
+  background-color: var(--secondary-color); /* או גוון חום בהיר לבחירתך כמו #8c6d62 או #a68474 */
+  padding: 15px 25px;
+  border-radius: 12px; /* פינות מעוגלות ועדינות למסגרת */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* הצללה עדינה שתבלוט על רקע ההדר */
+  width: fit-content; /* המסגרת תתאים את עצמה בדיוק לאורך של התפריט והחיפוש */
 }
 
