@@ -322,22 +322,32 @@ header nav ul li a:hover {
   background-color: #48352b;
 }
 
-/* תיבת החיפוש מקבלת גם היא מסגרת קטנה ונפרדת בדיוק כמו הכפתורים */
+
+/* עיצוב תיבת החיפוש בדיוק כמו שאר הכפתורים */
 .search-input {
-  background-color: #584338;
-  color: #fff;
-  border: 1px solid #7c6255;
+  background-color: #f4eee1; /* רקע שמנת-בהיר תואם לכפתורים */
+  color: var(--primary-color); /* טקסט בצבע חום כהה */
+  border: 1px solid #dcd2c1;
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 1rem;
+  font-weight: 500;
   width: 220px;
   outline: none;
   font-family: inherit;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
+/* התאמת צבע הטקסט של ה-placeholder (הכיתוב האפור-בהיר שמופיע כשריקים) */
 .search-input::placeholder {
-  color: #e0d0c8;
+  color: #8c7a6b; /* גוון חום-אפרפר רך שרואים ברור על רקע השמנת */
+  opacity: 1;
+}
+
+.search-input:focus {
+  border-color: #7c6255;
+  background-color: #ffffff;
 }
 
 /* התאמת התפריט הנשלף (Dropdown) */
