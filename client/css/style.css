@@ -410,3 +410,59 @@ header nav .dropdown-content a:hover {
   font-weight: 800;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
+
+
+/* עיצוב ארבעת הכפתורים: רקע חום-בהיר/שמנת וטקסט חום כהה */
+header nav ul li a {
+  background-color: #f4eee1; /* צבע חום-בהיר/שמנת חמים */
+  color: var(--primary-color); /* טקסט בצבע החום הכהה של האתר */
+  border: 1px solid #dcd2c1;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 650; /* מודגש יותר ויפה */
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* אפקט ריחוף עדין לכפתורים */
+header nav ul li a:hover {
+  background-color: #e8dfd0;
+}
+
+/* התאמת התפריט הנשלף (Dropdown) שייפתח גם הוא בצבעים התואמים */
+header nav .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: #f4eee1;
+  border: 1px solid #dcd2c1;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  z-index: 10;
+  padding: 5px 0;
+}
+
+header nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+header nav .dropdown-content a {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--primary-color);
+  padding: 8px 15px;
+  display: block;
+  text-align: right;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+header nav .dropdown-content a:hover {
+  background-color: #e8dfd0;
+}
